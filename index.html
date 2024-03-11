@@ -8,8 +8,71 @@
     <title>AROUND</title>
   </head>
   <body class="page">
-    <header class="header"></header>
-    <main class="content"></main>
+    <header class="header">
+      <img src="./images/logo.png" alt="Logo header" class="header__logo" />
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__image"></div>
+        <div class="profile__heading">
+          <h1 class="profile__heading-title">
+            Jacques Cousteau <button class="profile__heading-edit"></button>
+          </h1>
+
+          <h2 class="profile__heading-subtitle">Explorador</h2>
+        </div>
+        <button class="profile__heading-add"></button>
+      </section>
+      <section class="cards">
+        <ul class="cards__public">
+          <li class="card">
+            <div class="card__image">
+              <img
+                src="./images/kirill-pershin-1088404-unsplash.jpg"
+                alt="imagen de Valle de Yosemite"
+                class="card__image-photo"
+              />
+              <!-- <span class="card__image-delete"></span> -->
+            </div>
+            <div class="card__content">
+              <h3 class="card__content-title">Valle de Yosemite</h3>
+              <span class="card__content-like"></span>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__image">
+              <img
+                src="./images/kirill-pershin-1404681-unsplash.jpg"
+                alt="fotogracia de Lago Louise"
+                class="card__image-photo"
+              />
+              <!-- <span class="card__image-delete"></span> -->
+            </div>
+            <div class="card__content">
+              <h3 class="card__content-title">Lago Louise</h3>
+              <span class="card__content-like"></span>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__image">
+              <img
+                src="./images/kirill-pershin-1556355-unsplash.jpg"
+                alt="fotogracia de montañas calvas"
+                class="card__image-photo"
+              />
+              <!-- <span class="card__image-delete"></span> -->
+            </div>
+            <div class="card__content">
+              <h3 class="card__content-title">Montañas Calvas</h3>
+              <span class="card__content-like"></span>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
     <footer class="footer"></footer>
   </body>
 </html>

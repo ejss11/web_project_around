@@ -1,0 +1,84 @@
+.cards {
+  display: flex;
+
+  width: 882px;
+  height: 743px;
+  border-radius: 10px 10px 0 0;
+  margin: 50px 0 0 0;
+}
+
+.cards__public {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+  height: 381px;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+  list-style: none;
+}
+.card__image {
+  display: inline-block;
+  width: 282px;
+  height: 282px;
+
+  z-index: 1;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+.card__image span {
+  position: absolute;
+}
+.card__image-photo {
+  width: 282px;
+  height: 282px;
+  list-style: none;
+  border-radius: 10px 10px 0 0;
+}
+.card__image-delete {
+  display: flex;
+  align-items: flex-start;
+  width: 18px;
+  height: 19.3px;
+  /* background-image: url(../images/delete.svg); */
+  /* background-repeat: no-repeat; */
+
+  position: fixed;
+  margin: 18px 15px 0 249px;
+  list-style-type: none;
+  z-index: 1;
+}
+.card__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 246px;
+  height: 23px;
+  list-style-type: none;
+  margin: 25px 15px 31px 21px;
+}
+.card__content-title {
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: #000;
+  margin: 0;
+}
+
+.card__content-like {
+  width: 21px;
+  height: 19px;
+  background-image: url("../images/like.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 5px;
+}

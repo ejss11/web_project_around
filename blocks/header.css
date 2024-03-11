@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  width: 882px;
+  height: 74px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  width: 173px;
+  height: 33px;
+}
+
+.header__line {
+  width: 882px;
+  height: 1px;
+  border: 1px solid;
+  color: #545454;
+  margin-top: 41px;
+}
