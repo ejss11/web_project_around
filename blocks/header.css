@@ -21,3 +21,29 @@
   color: #545454;
   margin-top: 41px;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    width: 768px;
+    margin: 0 auto;
+  }
+  .header__line {
+    width: 768px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    width: 320px;
+    margin: 0;
+  }
+  .header__logo {
+    width: 33.33%;
+    height: auto;
+    margin: 0;
+  }
+  .header__line {
+    width: 320px;
+    margin: auto;
+  }
+}
