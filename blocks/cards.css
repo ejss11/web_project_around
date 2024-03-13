@@ -2,7 +2,7 @@
   display: flex;
 
   width: 882px;
-  height: 743px;
+  height: 100%;
   border-radius: 10px 10px 0 0;
   margin: 50px 0 0 0;
 }
@@ -50,6 +50,9 @@
   z-index: 1;
   justify-content: flex-start;
 }
+.card__image-delete:hover {
+  opacity: 0.3;
+}
 .card__content {
   display: flex;
   flex-direction: row;
@@ -88,10 +91,18 @@
   .cards__public {
     justify-content: center;
   }
+
+  .card__image-delete:hover {
+    opacity: 0.3;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .cards {
     width: 320px;
+  }
+
+  .card__image-delete:hover {
+    opacity: 0.3;
   }
 }
