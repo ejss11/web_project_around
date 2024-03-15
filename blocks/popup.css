@@ -80,7 +80,7 @@
   margin: 0 0 29.74px 0;
 }
 
-.from__submit {
+.form__submit {
   margin: 10.26px 0 0 0;
   border: 0;
   background-color: black;
@@ -88,7 +88,7 @@
   width: 358px;
   height: 50.15px;
 }
-.from__submit:hover {
+.form__submit:hover {
   opacity: 0.3;
 }
 
@@ -168,7 +168,7 @@
     margin: 0 0 30px 0;
   }
 
-  .from__submit {
+  .form__submit {
     margin: 10.26px 0 0 0;
     border: 0;
     background-color: black;
@@ -188,11 +188,13 @@
     background-position: center;
   }
 
-  .from__submit:focus {
-    opacity: 0.3;
+  .form__submit:hover {
+    opacity: 0.5;
   }
 
-  .popup__close-btn:focus {
-    opacity: 0.3;
+  .popup__close-btn:hover {
+    background-color: black;
+    transition: background-color 0.5s;
+    /* opacity: 0.5; */
   }
 }

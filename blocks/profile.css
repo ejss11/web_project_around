@@ -34,6 +34,9 @@
   font-size: 42px;
   line-height: 56px;
   color: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .profile__heading-subtitle {
   width: 372px;
@@ -44,6 +47,9 @@
   line-height: 21.78px;
   color: #ffffff;
   margin: 16px 0 0 1px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__heading-edit {
