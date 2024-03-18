@@ -83,6 +83,20 @@
   margin: 5px;
 }
 
+.card__content-like:hover {
+  opacity: 0.5;
+}
+@media screen and (max-width: 880px) {
+  .cards {
+    width: calc(100% -25px);
+  }
+  .cards__public {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 5px);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .cards {
     width: 768px;
@@ -93,10 +107,15 @@
   }
   .cards__public {
     justify-content: center;
+    gap: calc(18px - 0.5em);
   }
 
   .card__image-delete:hover {
     opacity: 0.3;
+  }
+  .card {
+    width: auto;
+    height: auto;
   }
 }
 
