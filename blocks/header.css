@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 320px) {
   .header {
-    width: calc(50% -10px);
+    width: calc(50% - 10px);
     height: 100%;
     margin: 0;
   }

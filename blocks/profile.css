@@ -87,12 +87,12 @@
     margin: 5px 5px;
   }
   .profile__heading {
-    width: calc(100% -30px);
+    width: calc(100% - 30px);
     height: 50%;
     margin: 0 20px 0 20px;
   }
   .profile__image {
-    width: calc(100% -20px);
+    width: calc(100% - 20px);
   }
   .profile__heading-title {
     width: calc(100% - 5px);
