@@ -142,7 +142,7 @@
 
   .profile__image {
     align-items: center;
-    width: calc(30% - 2px);
+    width: calc(40% - 2px);
 
     background-image: url(../images/image_profile.jpg);
     background-size: cover;
