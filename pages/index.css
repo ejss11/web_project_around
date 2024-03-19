@@ -6,8 +6,3 @@
 @import url("../blocks/cards.css");
 @import url("../blocks/popup.css");
 @import url("../blocks/footer.css");
-
-@font-face {
-  font-family: "Inter";
-  src: url(../vendor/fonts/Inter-VariableFont_slnt\wght.ttf) format("truetype");
-}
