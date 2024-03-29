@@ -45,7 +45,9 @@
   background-image: url(../images/delete.svg);
   background-repeat: no-repeat;
   border: none;
+  cursor: pointer;
   position: absolute;
+  object-fit: contain;
   margin: 18px 15px 0 249px;
   z-index: 1;
   justify-content: flex-start;
@@ -75,17 +77,22 @@
 }
 
 .card__content-like {
-  width: 21px;
+  width: 36px;
   height: 19px;
   background-image: url("../images/like.svg");
   background-position: center;
   background-repeat: no-repeat;
-  margin: 5px;
+  margin: 2px 0 5px 5px;
 }
 
 .card__content-like:hover {
   opacity: 0.5;
 }
+
+.card__content-like_Active {
+  background-image: url("../images/likeActive.png");
+}
+
 @media screen and (max-width: 880px) {
   .cards {
     width: calc(100% - 25px);

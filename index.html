@@ -35,94 +35,7 @@
         <button class="profile__heading-add"></button>
       </section>
       <section class="cards">
-        <ul class="cards__public">
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash.jpg"
-                alt="imagen de Valle de Yosemite"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Valle de Yosemite</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash.jpg"
-                alt="fotogracia de Lago Louise"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Lago Louise</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash.jpg"
-                alt="fotogracia de montañas calvas"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Montañas Calvas</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash.png"
-                alt="fotogracia de Latemar"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Latemar</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash.png"
-                alt="fotogracia de Vonais National"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Vanoise National Park</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-          <li class="card">
-            <div class="card__image">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash.png"
-                alt="fotogracia de Lago di Baries"
-                class="card__image-photo"
-              />
-              <span class="card__image-delete"></span>
-            </div>
-            <div class="card__content">
-              <h3 class="card__content-title">Lago di Baries</h3>
-              <span class="card__content-like"></span>
-            </div>
-          </li>
-        </ul>
+        <ul class="cards__public"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -131,7 +44,7 @@
     <div class="popup popup_content_profile">
       <div class="popup__overlay"></div>
       <div class="popup__content">
-        <button class="popup__close-btn"></button>
+        <button type="button" class="popup__close-btn"></button>
         <div class="popup__body">
           <h2 class="popup__title">Editar Perfil</h2>
           <form class="form">
@@ -157,7 +70,7 @@
     <div class="popup popup_content_add-card">
       <div class="popup__overlay"></div>
       <div class="popup__content">
-        <button class="popup__close-btn"></button>
+        <button type="button" class="popup__close-btn"></button>
         <div class="popup__body">
           <h2 class="popup__title">Nuevo Lugar</h2>
           <form class="form">
@@ -180,6 +93,25 @@
         </div>
       </div>
     </div>
+    <div class="popup popup_image">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button type="button" class="popup__close-btn"></button>
+        <img class="popup__image" src="" alt="">
+        <p class="popup__image-title"></p>
+      </div>
+    <template class="template">
+      <li class="card">
+        <div class="card__image">
+          <img src="" alt="imagen template" class="card__image-photo" />
+          <span class="card__image-delete"></span>
+        </div>
+        <div class="card__content">
+          <h3 class="card__content-title"></h3>
+          <span class="card__content-like"></span>
+        </div>
+      </li>
+    </template>
     <script src="index.js"></script>
   </body>
 </html>

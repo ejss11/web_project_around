@@ -60,6 +60,7 @@
   background-image: url(../images/edit.png);
   background-repeat: no-repeat;
   background-position: center;
+  margin: auto;
 }
 .profile__heading-edit:hover {
   opacity: 0.3;
@@ -89,15 +90,16 @@
   .profile__heading {
     width: calc(100% - 30px);
     height: 50%;
-    margin: 0 20px 0 20px;
+    margin: 0 0 0 20px;
   }
   .profile__image {
     width: calc(25% - 25px);
   }
   .profile__heading-title {
-    width: calc(65% - 5px);
+    width: calc(74% - 10px);
     height: 50%;
     margin: 0;
+    font-weight: 400;
   }
   .profile__heading-subtitle {
     width: calc(50% - 5px);
@@ -173,7 +175,7 @@
   }
   .profile__heading-title {
     width: 100%;
-    font-size: 28px;
+    font-size: 24px;
   }
   .profile__heading-add {
     width: calc(100% - 5px);
