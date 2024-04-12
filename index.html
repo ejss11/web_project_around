@@ -53,16 +53,22 @@
               name="name"
               class="form__input"
               placeholder="Nombre"
+              minlength="2"
+              maxlength="40"
+              required
             />
-            <span class="form__error"></span>
+            <span class="form__input-error form__input-error_type_name"></span>
             <input
               type="text"
               name="about"
               class="form__input"
               placeholder="Acerca de mí"
+              minlength="2"
+              maxlength="200"
+              required
             />
-            <span class="form__error"></span>
-            <input type="submit" class="form__submit" value="Guardar" />
+            <span class="form__input-error form__input-error_type_about"></span>
+            <button type="submit" class="form__submit" disabled>Guardar</button>
           </form>
         </div>
       </div>
@@ -79,16 +85,23 @@
               name="title"
               class="form__input"
               placeholder="Titulo"
+              minlength="2"
+              maxlength="30"
+              required
             />
-            <span class="form__error"></span>
+            <span class="form__input-error form__input-error_type_title"></span>
             <input
-              type="text"
+              type="url"
               name="link"
               class="form__input"
               placeholder="Enlace de la imagen"
+              required
+              minlength="2"
+              pattern="https://"
+              pattern="http://"
             />
-            <span class="form__error"></span>
-            <input type="submit" class="form__submit" value="Crear" />
+            <span class="form__input-error form__input-error_type_link"></span>
+            <button type="submit" class="form__submit" disabled>Crear</button>
           </form>
         </div>
       </div>
@@ -97,7 +110,7 @@
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button type="button" class="popup__close-btn"></button>
-        <img class="popup__image" src="ruta" alt="imagen popup" />
+        <img class="popup__image" src="" alt="imagen popup" />
         <p class="popup__image-title"></p>
       </div>
     </div>
@@ -113,6 +126,6 @@
         </div>
       </li>
     </template>
-    <script src="index.js"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
