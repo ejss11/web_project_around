@@ -1,4 +1,11 @@
-import { resetInputValues } from "./validate.js";
+import {
+  resetInputValues,
+  closePopupOnEscape,
+  closePopupOverlay,
+  enableValidation,
+  isValidInputs,
+  setEventListeners,
+} from "./validate.js";
 
 //Botones de Editar y Agregar Cards
 const buttonEdit = document.querySelector(".profile__heading-edit");
@@ -46,34 +53,6 @@ const initialCards = [
 ];
 
 // Popup Edit Perfile....
-export const fromConfig = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "form__input_has_error",
-  errorClass: ".form__input-error_type_",
-  inputErrorSpamClass: ".form__input-error",
-};
-
-function closePopupOverlay(event) {
-  const popup = event.target.closest(".popup");
-  if (popup) {
-    resetInputValues(popup);
-    popup.classList.remove("popup_open");
-  }
-}
-
-function closePopupOnEscape(event) {
-  const popup = Array.from(document.querySelectorAll(".popup"));
-
-  if (event.key === "Escape") {
-    popup.forEach((pop) => {
-      resetInputValues(pop);
-      ClosePopup(pop);
-    });
-  }
-}
 
 document.querySelectorAll(".popup__overlay").forEach((overlay) => {
   overlay.addEventListener("click", closePopupOverlay);
@@ -88,7 +67,7 @@ const popupCloseButtons = Array.from(
 function openPopup(popup) {
   popup.classList.add("popup_open");
 }
-function ClosePopup(popup) {
+export function ClosePopup(popup) {
   popup.classList.remove("popup_open");
 }
 //Abrir Popup Profile
@@ -161,42 +140,5 @@ initialCards.forEach((item) => {
 
   cardArea.append(cardNode);
 });
-
-//Validacion del Formularios (Editar Perfil)
-function setEventListeners(form, fromConfig) {
-  const formInputs = Array.from(
-    form.querySelectorAll(fromConfig.inputSelector)
-  );
-  const submitButton = form.querySelector(fromConfig.submitButtonSelector);
-
-  formInputs.forEach((inputElement) => {
-    inputElement.addEventListener("input", (evt) => {
-      const errorNode = form.querySelector(
-        `${fromConfig.errorClass + inputElement.name}`
-      );
-      if (!inputElement.validity.valid) {
-        inputElement.classList.add(fromConfig.inputErrorClass);
-        errorNode.textContent = inputElement.validationMessage;
-      } else {
-        inputElement.classList.remove(fromConfig.inputErrorClass);
-        errorNode.textContent = "";
-      }
-      submitButton.disabled = !isValidInputs(formInputs);
-    });
-  });
-}
-
-function enableValidation() {
-  const forms = document.querySelectorAll(fromConfig.formSelector);
-  forms.forEach((formElement) => {
-    setEventListeners(formElement, fromConfig);
-  });
-}
-
-function isValidInputs(formInputs) {
-  return formInputs.every((item) => {
-    return item.validity.valid;
-  });
-}
 
 enableValidation();
