@@ -1,4 +1,5 @@
-import { Card } from "./Card.js";
+import "./styles/index.css";
+import { Card } from "../components/Card.js";
 import {
   openPopup,
   ClosePopup,
@@ -6,31 +7,31 @@ import {
   resetInputValues,
   closePopupOverlay,
   closePopupOnEscape,
-  initialCards,
+} from "../utils/utils.js";
+
+import { FormValidator } from "../utils/FormValidator.js";
+
+import {
+  buttonAdd,
+  buttonEdit,
+  cardArea,
+  formAddCard,
+  formProfile,
   fromConfig,
-} from "./utils.js";
-
-import { FormValidator } from "./FormValidator.js";
-
-//Botones de Editar y Agregar Cards
-const buttonEdit = document.querySelector(".profile__heading-edit");
-const buttonAdd = document.querySelector(".profile__heading-add");
-//Popup, formulario, perfil
-const popupProfile = document.querySelector(".popup_content_profile");
-const popupAddCard = document.querySelector(".popup_content_add-card");
-const formProfile = popupProfile.querySelector(".form");
-const formAddCard = popupAddCard.querySelector(".form");
-const inputProfileName = formProfile.querySelector(".form__input[name=name]");
-const inputProfileAbout = formProfile.querySelector(".form__input[name=about]");
-const profileNodeTitle = document.querySelector(".profile__heading-title");
-const profileNodeSubtitle = document.querySelector(
-  ".profile__heading-subtitle"
-);
-const newPlaceNameInput = formAddCard.querySelector(".form__input[name=title]");
-const newPlaceLinkInput = formAddCard.querySelector(".form__input[name=link]");
-const cardArea = document.querySelector(".cards__public");
-
-export const popupImage = document.querySelector(".popup_image");
+  initialCards,
+  inputProfileAbout,
+  inputProfileName,
+  popupAddCard,
+  popupImage,
+  popupProfile,
+  newPlaceLinkInput,
+  newPlaceNameInput,
+  profileNodeSubtitle,
+  profileNodeTitle,
+  forms,
+  popupCloseButtons,
+} from "../utils/constants.js";
+import Section from "../components/section.js";
 
 // Popup Edit Perfile....
 
@@ -39,10 +40,6 @@ document.querySelectorAll(".popup__overlay").forEach((overlay) => {
 });
 
 document.addEventListener("keydown", closePopupOnEscape);
-const forms = Array.from(document.querySelectorAll(".form"));
-const popupCloseButtons = Array.from(
-  document.querySelectorAll(".popup__close-btn")
-);
 
 //Abrir Popup Profile
 buttonEdit.addEventListener("click", function () {
@@ -101,3 +98,22 @@ forms.forEach((form) => {
   const formNode = new FormValidator(fromConfig, form);
   const formValid = formNode.enableValidation();
 });
+
+const CardList = new Section(
+  {
+    data: initialCards,
+    renderer: (item) => {
+      const card = new Card(
+        {
+          data: item,
+          handleCardClick: () => popupImage.open(item.link, item.name),
+        },
+        ".template"
+      );
+      return card._createCard();
+    },
+  },
+  cardArea
+);
+
+CardList.render();

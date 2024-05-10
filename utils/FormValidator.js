@@ -5,7 +5,6 @@ import {
   isValidInputs,
   resetInputValues,
   setEventListeners,
-  fromConfig,
 } from "./utils.js";
 
 export class FormValidator {

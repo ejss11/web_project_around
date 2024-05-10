@@ -114,7 +114,7 @@
   transform: translate(43px, -5%);
   background-color: black;
   border: 0;
-  background-image: url(../images/Close\ Icon.png);
+  background-image: url(../images/CloseIcon.png);
   background-repeat: no-repeat;
   background-position: center;
   align-self: flex-end;
@@ -249,7 +249,7 @@
     transform: translate(-7px, -41%);
     background-color: black;
     border: 0;
-    background-image: url(../images/Close\ Icon.png);
+    background-image: url(../images/CloseIcon.png);
     background-repeat: no-repeat;
     background-position: center;
   }
