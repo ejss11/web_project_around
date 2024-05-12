@@ -18,15 +18,7 @@ export class Card {
 
   _createCard() {
     const cardElement = this._getTemplate();
-    const popupCardAdd = cardElement.classList.contains(
-      ".popup_content_add-card"
-    );
 
-    if (popupCardAdd) {
-      console.log("El popup contiene popup_content_add-card ");
-    } else {
-      console.log("El popup no contiene popup_content_add-card ");
-    }
     cardElement.querySelector(".card__content-title").textContent =
       this._data.name;
     cardElement.querySelector(".card__image-photo").alt =
