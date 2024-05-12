@@ -6,9 +6,6 @@ export class Card {
     this._data = data;
     this.handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
-
-    // Llama a la función handleCardClick cuando se hace clic en la tarjeta
-    this._handleOpenPopup = this._handleOpenPopup.bind(this);
   }
 
   _getTemplate() {
@@ -21,24 +18,26 @@ export class Card {
 
   _createCard() {
     const cardElement = this._getTemplate();
+    const popupCardAdd = cardElement.classList.contains(
+      ".popup_content_add-card"
+    );
 
+    if (popupCardAdd) {
+      console.log("El popup contiene popup_content_add-card ");
+    } else {
+      console.log("El popup no contiene popup_content_add-card ");
+    }
     cardElement.querySelector(".card__content-title").textContent =
       this._data.name;
     cardElement.querySelector(".card__image-photo").alt =
       "Imagen de : " + this._data.name;
     cardElement.querySelector(".card__image-photo").src = this._data.link;
 
-    return cardElement;
-  }
+    if (cardElement !== null) {
+      cardElement.addEventListener("click", this.handleCardClick);
+    }
 
-  _handleOpenPopup() {
-    popupImage.classList.add("popup_open");
-    popupImage.querySelector(".popup__image").src = this._data.link;
-    popupImage.querySelector(".popup__image").alt =
-      "Imagen de : " + this._data.name;
-    popupImage.querySelector(".popup__image-title").textContent =
-      this._data.name;
-    popupImage.addEventListener("click", this.clickHandler.bind(this));
+    return this._addListeners(cardElement);
   }
 
   _handleClosePopup() {
@@ -46,8 +45,7 @@ export class Card {
     popupImage.classList.remove("popup_open");
   }
 
-  _addListeners() {
-    const cardElement = this._createCard();
+  _addListeners(cardElement) {
     const likeButton = cardElement.querySelector(".card__content-like");
 
     // Eliminar Card
@@ -61,11 +59,6 @@ export class Card {
     likeButton.addEventListener("click", () => {
       likeButton.classList.toggle("card__content-like_Active");
     });
-
-    // Click sobre la imagen
-    cardElement
-      .querySelector(".card__image-photo")
-      ?.addEventListener("click", this._handleOpenPopup);
 
     return cardElement;
   }

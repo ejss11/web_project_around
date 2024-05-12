@@ -12,8 +12,7 @@
       name="keywords"
       content="Galeria, Paisajes, Aventura a Explorar lugares"
     />
-    <link rel="stylesheet" href="../pages/index.css" />
-    <link rel="stylesheet" href="../vendor/fonts/fonts.css" />
+
     <title>AROUND</title>
   </head>
   <body class="page">
@@ -62,6 +61,7 @@
               required
             />
             <span class="form__input-error form__input-error_type_name"></span>
+            <br />
             <input
               type="text"
               name="about"
@@ -72,6 +72,7 @@
               required
             />
             <span class="form__input-error form__input-error_type_about"></span>
+            <br />
             <button type="submit" class="form__submit" disabled>Guardar</button>
           </form>
         </div>
@@ -94,6 +95,7 @@
               required
             />
             <span class="form__input-error form__input-error_type_title"></span>
+            <br />
             <input
               type="url"
               name="link"
@@ -103,6 +105,7 @@
               minlength="2"
             />
             <span class="form__input-error form__input-error_type_link"></span>
+            <br />
             <button type="submit" class="form__submit" disabled>Crear</button>
           </form>
         </div>
@@ -112,7 +115,7 @@
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button type="button" class="popup__close-btn"></button>
-        <img class="popup__image" src="ruta" alt="imagen popup" />
+        <img class="popup__image" src="" alt="imagen popup" />
         <p class="popup__image-title"></p>
       </div>
     </div>
@@ -128,6 +131,5 @@
         </div>
       </li>
     </template>
-    <script src="./index.js" type="module"></script>
   </body>
 </html>

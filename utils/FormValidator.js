@@ -1,11 +1,4 @@
-import {
-  closePopupOnEscape,
-  closePopupOverlay,
-  enableValidation,
-  isValidInputs,
-  resetInputValues,
-  setEventListeners,
-} from "./utils.js";
+import { enableValidation, isValidInputs, resetInputValues } from "./utils.js";
 
 export class FormValidator {
   constructor(Config, formElement) {

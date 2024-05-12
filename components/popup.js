@@ -1,6 +1,8 @@
+import { resetInputValues } from "../utils/utils";
+
 export default class Popup {
   constructor(popupSelector) {
-    this.popup = document.querySelector(popupSelector);
+    this.popup = popupSelector;
     this._handleEscClose = this._handleEscClose.bind(this); // Vincula la función al contexto de la clase
 
     this.setEventListeners();
@@ -26,10 +28,10 @@ export default class Popup {
     closeButton.addEventListener("click", () => this.close());
 
     // Agregar detector de click al área sombreada del formulario (si es necesario)
-    const overlay = document.querySelector(".popup__overlay");
-    if (overlay) {
-      overlay.addEventListener("click", () => this.close());
-    }
+    const overlay = document.querySelectorAll(".popup__overlay");
+    overlay.forEach((itemOver) => {
+      itemOver.addEventListener("click", () => this.close());
+    });
 
     // Agregar detector de la tecla Esc para cerrar el popup
     document.addEventListener("keydown", this._handleEscClose);
@@ -40,15 +42,14 @@ export class PopupWithImage extends Popup {
   constructor(popupSelector, imageSelector, captionSelector) {
     super(popupSelector); // Llama al constructor de la clase padre
 
-    this.image = document.querySelector(imageSelector);
-    this.caption = document.querySelector(captionSelector);
+    this.imageSelector = document.querySelector(imageSelector);
+    this.captionSelector = document.querySelector(captionSelector);
   }
 
   open(imageUrl, imageCaption) {
     super.open(); // Llama al método `open()` de la clase padre
-
-    this.image.src = imageUrl;
-    this.caption.textContent = imageCaption;
+    this.imageSelector.src = imageUrl;
+    this.captionSelector.textContent = imageCaption;
   }
 }
 
@@ -58,11 +59,21 @@ export class PopupWithForm extends Popup {
 
     this.submitCallback = submitCallback;
 
-    this._setInputEventListeners(); // Agregar detectores de eventos a los campos de entrada
+    //this._setInputEventListeners(); // Agregar detectores de eventos a los campos de entrada
+  }
+
+  open() {
+    super.open();
+  }
+
+  reset() {
+    // Restablecer el formulario
+    const form = this.popup.querySelector(".form");
+    resetInputValues(form);
   }
 
   _getInputValues() {
-    const fields = this.popup.querySelectorAll('input[type="text"], textarea');
+    const fields = this.popup.querySelectorAll(".form__input");
     const values = {};
 
     for (const field of fields) {
@@ -89,9 +100,6 @@ export class PopupWithForm extends Popup {
 
   close() {
     super.close(); // Llamar al método del padre
-
-    // Restablecer el formulario
-    const form = this.popup.querySelector("form");
-    form.reset();
+    this.reset();
   }
 }

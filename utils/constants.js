@@ -31,7 +31,7 @@ export const fromConfig = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "form__input_has_error",
+  inputErrorClass: ".form__input_has_error",
   errorClass: ".form__input-error_type_",
   inputErrorSpamClass: ".form__input-error",
 };
@@ -39,6 +39,10 @@ export const fromConfig = {
 //Botones de Editar y Agregar Cards
 export const buttonEdit = document.querySelector(".profile__heading-edit");
 export const buttonAdd = document.querySelector(".profile__heading-add");
+export const profileTitle = document.querySelector(".profile__heading-title");
+export const profileSubTitle = document.querySelector(
+  ".profile__heading-subtitle"
+);
 //Popup, formulario, perfil
 export const popupProfile = document.querySelector(".popup_content_profile");
 export const popupAddCard = document.querySelector(".popup_content_add-card");
@@ -70,3 +74,6 @@ export const forms = Array.from(document.querySelectorAll(".form"));
 export const popupCloseButtons = Array.from(
   document.querySelectorAll(".popup__close-btn")
 );
+
+export const cardImage = document.querySelector(".card__image-photo");
+export const cardTitle = document.querySelector(".card__content-title");
