@@ -1,4 +1,5 @@
 import { fromConfig } from "../utils/constants.js";
+import { api } from "../src/index.js";
 //Funcion para resetear los  campos de los formularios
 export function resetInputValues(form) {
   const inputs = form.querySelectorAll(fromConfig.inputSelector);
@@ -29,6 +30,14 @@ export function closePopupOnEscape(event) {
       resetInputValues(pop);
       ClosePopup(pop);
     });
+  }
+}
+
+export function renderLoading(isLoading, selector) {
+  if (isLoading) {
+    selector.textContent = "Guardando...";
+  } else {
+    selector.textContent = "Guardar";
   }
 }
 
@@ -77,3 +86,24 @@ export function openPopup(popup) {
 export function ClosePopup(popup) {
   popup.classList.remove("popup_open");
 }
+
+//Funcion Contar Me Gusta
+export function contarMeGusta(card) {
+  //verificar que la propiedad likes exista y sea un array
+  if (Array.isArray(card.likes)) {
+    return card.likes.length;
+  } else {
+    return 0;
+  }
+}
+
+/* export function removeCardFormServer(card, popupDeleteCardConfirm) {
+  return () => {
+    api
+      .deleteCard(card.getCardId())
+      .then(card.handleDeleteCard(), popupDeleteCardConfirm.close())
+      .catch((err) => {
+        console.error(`Error: ${err.status}`);
+      });
+  };
+} */

@@ -16,8 +16,8 @@ export default class Section {
   render() {
     this.clear();
     this._rendererdItems.forEach((item) => {
-      const rendererdItem = this._renderer(item);
-      this.addItem(rendererdItem);
+      this._renderer(item);
+      //this.addItem(rendererdItem);
     });
   }
 }

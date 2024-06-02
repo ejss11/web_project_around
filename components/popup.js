@@ -1,3 +1,4 @@
+import { classof } from "core-js/features/object";
 import { resetInputValues } from "../utils/utils";
 
 export default class Popup {
@@ -34,7 +35,9 @@ export default class Popup {
     });
 
     // Agregar detector de la tecla Esc para cerrar el popup
-    document.addEventListener("keydown", this._handleEscClose);
+    document.addEventListener("keydown", (event) => {
+      this._handleEscClose(event);
+    });
   }
 }
 
@@ -47,9 +50,10 @@ export class PopupWithImage extends Popup {
   }
 
   open(imageUrl, imageCaption) {
-    super.open(); // Llama al método `open()` de la clase padre
+    document.addEventListener("keydown", this._handleEscClose);
     this.imageSelector.src = imageUrl;
     this.captionSelector.textContent = imageCaption;
+    super.open(); // Llama al método `open()` de la clase padre
   }
 }
 
@@ -82,6 +86,11 @@ export class PopupWithForm extends Popup {
 
     return values;
   }
+  submitForm() {
+    const formData = this._getInputValues();
+    this.reset();
+    return formData;
+  }
 
   setEventListeners() {
     super.setEventListeners(); // Llamar al método del padre
@@ -90,7 +99,7 @@ export class PopupWithForm extends Popup {
     const form = this.popup.querySelector(".form");
     form.addEventListener("submit", (event) => {
       event.preventDefault(); // Evita el envío del formulario por defecto
-
+      this._handleEscClose(event);
       const formData = this._getInputValues(); // Obtener valores de entrada
 
       this.submitCallback(formData); // Llamar la función de devolución de llamada de envío
@@ -100,6 +109,38 @@ export class PopupWithForm extends Popup {
 
   close() {
     super.close(); // Llamar al método del padre
-    this.reset();
+    //this.reset();
+  }
+}
+
+export class PopupWithConfirmation extends Popup {
+  constructor(popupSelector) {
+    super(popupSelector);
+  }
+
+  open(handleConfirm) {
+    super.open();
+    this._handleConfirm = handleConfirm;
+  }
+
+  close() {
+    super.close();
+  }
+
+  _handleEscClose(event) {
+    super._handleEscClose(event);
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    // Agregar detector de la tecla Esc para cerrar el popup
+    document.addEventListener("keydown", (event) => {
+      this._handleEscClose(event);
+    });
+    const popupConfirmation = this.popup.querySelector(".form__submit");
+    popupConfirmation.addEventListener("click", () => {
+      this._handleConfirm();
+      this.close();
+    });
   }
 }

@@ -58,11 +58,12 @@
 .card__content {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 246px;
   height: 23px;
+  justify-content: center;
   list-style-type: none;
   margin: 25px 15px 31px 21px;
+  width: 246px;
+  align-items: center;
 }
 .card__content-title {
   font-family: "Inter";
@@ -88,7 +89,19 @@
 .card__content-like:hover {
   opacity: 0.5;
 }
-
+.card__counter {
+  border-radius: 50%;
+  color: #000;
+  display: flex;
+  height: 25px;
+  position: relative;
+  width: 25px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  top: 15px;
+  left: 5px;
+}
 .card__content-like_Active {
   background-image: url("../images/likeActive.png");
 }

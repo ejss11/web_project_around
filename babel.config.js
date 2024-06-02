@@ -1,3 +1,5 @@
+const { resolve } = require("core-js/es/promise");
+
 const presets = [
   [
     "@babel/preset-env",
@@ -13,7 +15,7 @@ const presets = [
       },
 
       // utiliza polyfills para los navegadores especificados en la opción targets anterior
-      // Babel utiliza polyfills de la librería core-js
+      // Babel utiliza polyfills de la librería core-js "entry"
       useBuiltIns: "entry",
       corejs: "^3",
     },

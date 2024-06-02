@@ -77,3 +77,40 @@ export const popupCloseButtons = Array.from(
 
 export const cardImage = document.querySelector(".card__image-photo");
 export const cardTitle = document.querySelector(".card__content-title");
+
+export const groupId = "web_es_10";
+export const token = "97efebdf-3fe2-4b9f-9063-79770a806abe";
+
+export const profileNameNode = document.querySelector(
+  ".profile__heading-title"
+);
+export const profileAboutNode = document.querySelector(
+  ".profile__heading-subtitle"
+);
+
+export const profileAvatarNode = document.querySelector(".profile__image");
+
+export const handleOriginalResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+};
+
+export const botonEditAvatar = document.querySelector(".profile__edit-avatar");
+
+export const popupEditAvatar = document.querySelector(
+  ".popup_content_profile-image"
+);
+export const formAvatar = popupEditAvatar.querySelector(".form");
+export const inputUrlAvatar = formAvatar.querySelector(
+  ".form__input[name=url]"
+);
+export const buttonFormAvatar = formAvatar.querySelector(".form__submit");
+
+export const popupDeleteConfirmation = document.querySelector(
+  ".popup_content_delete-card"
+);
+
+export const buttonConfirmationDeleteId =
+  popupDeleteConfirmation.querySelector(".form__submit");

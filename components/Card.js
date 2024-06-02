@@ -1,9 +1,13 @@
-import { popupImage } from "../utils/constants";
+import { popupImage, groupId, token } from "../utils/constants";
 import { PopupWithImage } from "../components/popup";
+import { Api } from "../components/Api";
 
 export class Card {
   constructor({ data, handleCardClick }, templateSelector) {
-    this._data = data;
+    this._text = data.name;
+    this._link = data.link;
+    this._likes = data.likes || 0;
+    this._cardId = data._id;
     this.handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
@@ -16,40 +20,93 @@ export class Card {
     return cardCloneNode;
   }
 
-  _createCard() {
-    const cardElement = this._getTemplate();
-
-    cardElement.querySelector(".card__content-title").textContent =
-      this._data.name;
-    cardElement.querySelector(".card__image-photo").alt =
-      "Imagen de : " + this._data.name;
-    cardElement.querySelector(".card__image-photo").src = this._data.link;
-
-    if (cardElement !== null) {
-      cardElement.addEventListener("click", this.handleCardClick);
+  _createCard(profileId, item) {
+    console.log(item);
+    console.log(profileId);
+    this._element = this._getTemplate();
+    const elementTitle = this._element.querySelector(".card__content-title");
+    const elementImage = this._element.querySelector(".card__image-photo");
+    const elementLikes = this._element.querySelector(".card__counter");
+    this._addListeners(this._element);
+    elementTitle.textContent = this._text;
+    elementImage.alt = `Imagen de : ${this._text}`;
+    elementImage.src = this._link;
+    elementLikes.textContent = this._likes.length;
+    if (this._element !== null) {
+      this._element.addEventListener("click", this.handleCardClick);
+    }
+    if (this._likes) {
+      this._element.querySelector(".card__counter").textContent =
+        this._likes.length;
     }
 
-    return this._addListeners(cardElement);
+    if (item.owner._id != profileId) {
+      this._element.querySelector(".card__image-delete").style.display = "none";
+    }
+
+    return this._element;
   }
 
+  _handleOpenPopup() {
+    console.log(
+      "este es mi link: " + this._link + " y este es mi texto: " + this._text
+    );
+    const popup = new PopupWithImage(
+      popupImage,
+      ".popup__image",
+      ".popup__image-title"
+    );
+
+    popup.open(this._link, this._text);
+  }
   _handleClosePopup() {
     popupImage.querySelector(".popup__image").src = "";
     popupImage.classList.remove("popup_open");
   }
 
-  _addListeners(cardElement) {
-    const likeButton = cardElement.querySelector(".card__content-like");
+  handleDeleteCard() {
+    this._element.remove();
+    this._element = null;
+  }
 
-    // Eliminar Card
+  _addListeners(cardElement) {
+    //const cardElement = this._getTemplate();
+    const likeButton = cardElement.querySelector(".card__content-like");
     cardElement
-      .querySelector(".card__image-delete")
-      ?.addEventListener("click", () => {
-        cardElement.remove();
+      .querySelector(".card__image-photo")
+      .addEventListener("click", () => {
+        this._handleOpenPopup();
       });
 
     // Boton de Like
-    likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("card__content-like_Active");
+    likeButton.addEventListener("click", (e) => {
+      if (e.target.classList.contains("card__content-like_Active")) {
+        e.target.classList.remove("card__content-like_Active");
+        const deleteLikes = new Api({
+          baseUrl: `https://around.nomoreparties.co/v1/${groupId}`,
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+
+        deleteLikes.removeLike(this._cardId).then((data) => {
+          cardElement.querySelector(".card__counter").textContent =
+            data.likes.length;
+        });
+      } else {
+        e.target.classList.add("card__content-like_Active");
+        const updateLikes = new Api({
+          baseUrl: `https://around.nomoreparties.co/v1/${groupId}`,
+          headers: {
+            Authorization: `${token}`,
+          },
+        });
+
+        updateLikes.addLike(this._cardId).then((data) => {
+          cardElement.querySelector(".card__counter").textContent =
+            data.likes.length;
+        });
+      }
     });
 
     return cardElement;
@@ -57,5 +114,9 @@ export class Card {
 
   clickHandler() {
     this.handleCardClick(this._data);
+  }
+
+  getCardId() {
+    return this._cardId;
   }
 }

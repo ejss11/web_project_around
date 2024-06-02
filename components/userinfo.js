@@ -15,4 +15,8 @@ export class UserInfo {
     this._userNameElement.textContent = name;
     this._userJobElement.textContent = job;
   }
+
+  getUserId(id) {
+    return (this._userId = id);
+  }
 }

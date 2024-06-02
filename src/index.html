@@ -26,10 +26,16 @@
     </header>
     <main class="content">
       <section class="profile">
-        <div class="profile__image"></div>
+        <div class="profile__image-container">
+          <img class="profile__image" src="" alt="" />
+          <div class="profile__overlay">
+            <span class="profile__edit-avatar"></span>
+          </div>
+        </div>
+
         <div class="profile__heading">
           <div class="profile__heading-name">
-            <h1 class="profile__heading-title">Jacques Cousteau</h1>
+            <h1 class="profile__heading-title"></h1>
             <button class="profile__heading-edit"></button>
           </div>
 
@@ -111,11 +117,49 @@
         </div>
       </div>
     </div>
+    <div class="popup popup_content_profile-image">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button type="button" class="popup__close-btn"></button>
+        <div class="popup__body">
+          <h2 class="popup__title">Cambiar foto de perfil</h2>
+          <form class="form">
+            <br />
+            <input
+              type="url"
+              name="url"
+              class="form__input"
+              placeholder="Enlace de la imagen de perfil"
+              required
+              minlength="2"
+            />
+            <span class="form__input-error form__input-error_type_url"></span>
+            <br />
+            <button type="submit" class="form__submit" disabled>Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup_content_delete-card">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button type="button" class="popup__close-btn"></button>
+        <div class="popup__body">
+          <h2 class="popup__title">¿Estás seguro?</h2>
+          <form class="form">
+            <br />
+            <button type="button" class="form__submit" id="confirm-delete">
+              Si
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
     <div class="popup popup_image">
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button type="button" class="popup__close-btn"></button>
-        <img class="popup__image" src="." alt="imagen popup" />
+        <img class="popup__image" src="" alt="imagen popup" />
         <p class="popup__image-title"></p>
       </div>
     </div>
@@ -127,7 +171,9 @@
         </div>
         <div class="card__content">
           <h3 class="card__content-title"></h3>
-          <span class="card__content-like"></span>
+          <span class="card__content-like"
+            ><span class="card__counter">0</span></span
+          >
         </div>
       </li>
     </template>
